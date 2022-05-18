@@ -1,19 +1,25 @@
 fileFormatVersion: 2
-guid: a492dd7735303284b93b3f5a6e40e8b5
+guid: 23960888960a66b45addaf75cc61f492
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7815371044791450175
-    second: player-idle_0
+      213: 637523042609327089
+    second: payer-run_0
   - first:
-      213: 1012134607969099132
-    second: player-idle_1
+      213: 141339069586583369
+    second: payer-run_1
   - first:
-      213: -6563698218304314273
-    second: player-idle_2
+      213: 329765879825372414
+    second: payer-run_2
   - first:
-      213: 3839310155185486058
-    second: player-idle_3
+      213: -59085842669821731
+    second: payer-run_3
+  - first:
+      213: -4252023860643004593
+    second: payer-run_4
+  - first:
+      213: -7689039910700512030
+    second: payer-run_5
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -113,7 +119,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: player-idle_0
+      name: payer-run_0
       rect:
         serializedVersion: 2
         x: 0
@@ -127,14 +133,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f3afaa0ce86c57c60800000000000000
-      internalID: 7815371044791450175
+      spriteID: 1fbeada54dfe8d800800000000000000
+      internalID: 637523042609327089
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player-idle_1
+      name: payer-run_1
       rect:
         serializedVersion: 2
         x: 32
@@ -148,14 +154,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c7d90ec3013db0e00800000000000000
-      internalID: 1012134607969099132
+      spriteID: 94fa79b822326f100800000000000000
+      internalID: 141339069586583369
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player-idle_2
+      name: payer-run_2
       rect:
         serializedVersion: 2
         x: 64
@@ -169,14 +175,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f546b151f3f09e4a0800000000000000
-      internalID: -6563698218304314273
+      spriteID: ef4190e0250939400800000000000000
+      internalID: 329765879825372414
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player-idle_3
+      name: payer-run_3
       rect:
         serializedVersion: 2
         x: 96
@@ -190,8 +196,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ae8716e9e38f74530800000000000000
-      internalID: 3839310155185486058
+      spriteID: dd029683db51e2ff0800000000000000
+      internalID: -59085842669821731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: payer-run_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4f73e1b3d6cdf4c0800000000000000
+      internalID: -4252023860643004593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: payer-run_5
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ec05e280fa0b4590800000000000000
+      internalID: -7689039910700512030
       vertices: []
       indices: 
       edges: []
