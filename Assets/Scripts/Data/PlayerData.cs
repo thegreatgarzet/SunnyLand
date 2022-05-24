@@ -6,13 +6,17 @@ using UnityEngine;
 public class PlayerData : ScriptableObject {
   
     [Header("Exposed Values")]
+    [Header("JUMP")]
     public float maxJumpHeight = 4;
 
 	public float minJumpHeight = 1;
 
 	public float timeToJumpApex = .4f;
-	
+	[Header("MOVEMENT")]
 	public float moveSpeed = 6;
+    public bool EnableDoubleJump=true;
+    [Header("Exposed Values")]
+    public float WallSlide_Speed;
     
     [Header("Values changed on Enable")]
     public float maxJumpVelocity;

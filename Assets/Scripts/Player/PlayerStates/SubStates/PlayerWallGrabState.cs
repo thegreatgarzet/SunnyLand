@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerIdleState : PlayerGroundedState
+public class PlayerWallGrabState : PlayerOnWallState
 {
-    public PlayerIdleState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
+    public PlayerWallGrabState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
     {
-
     }
 
     public override void DoCheck()
@@ -27,6 +26,7 @@ public class PlayerIdleState : PlayerGroundedState
     public override void Exit()
     {
         base.Exit();
+        
     }
 
     public override int GetHashCode()
@@ -36,10 +36,16 @@ public class PlayerIdleState : PlayerGroundedState
 
     public override void LogicUpdate()
     {
+        player.SetVelocityY(0);
+        player.physics.SetGravity(0);
         base.LogicUpdate();
-
-        if(Input.x != 0f && !JumpInput){
-            stateMachine.ChangeState(player.MoveState);
+        
+        if(Input.y!=0){
+            if(Input.y>0){
+                stateMachine.ChangeState(player.ClimbState);
+            }else if(Input.y<0 || !Grab_Input){
+                stateMachine.ChangeState(player.WSlideState);
+            }
         }
     }
 

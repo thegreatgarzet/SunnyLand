@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerGroundedState : PlayerState
 {
     
-    public bool JumpInput;
+    
     public PlayerGroundedState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
     {
 
@@ -19,6 +19,7 @@ public class PlayerGroundedState : PlayerState
     public override void Enter()
     {
         base.Enter();
+        player.AirState.doubleJumped = false;
     }
 
     public override bool Equals(object obj)
@@ -39,14 +40,21 @@ public class PlayerGroundedState : PlayerState
     public override void LogicUpdate()
     {
         base.LogicUpdate();
-        Input = player.Input.GetDirInput();
+        
         player.SetVelocityX(Input.x);
         player.physics.Flip((int)Input.x);
-        JumpInput = player.Input.Jump_Input;
-        if(JumpInput){
-            player.Input.UseJumpInput();
-            stateMachine.ChangeState(player.JumpState);
+        if(!player.physics.On_ground){
+            stateMachine.ChangeState(player.AirState);
+        }else{
+            if(JumpInput){
+                player.Input.UseJumpInput();
+                stateMachine.ChangeState(player.JumpState);
+            
+            }else if(Grab_Input && TouchingWall){
+                stateMachine.ChangeState(player.GrabState);
+            }
         }
+        
     }
 
     public override void PhysicsUpdate()

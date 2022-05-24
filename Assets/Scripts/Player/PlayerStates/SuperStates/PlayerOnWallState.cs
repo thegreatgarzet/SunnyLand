@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerJumpState : PlayerAbilityState
+public class PlayerOnWallState : PlayerState
 {
-    public PlayerJumpState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
+    public PlayerOnWallState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
     {
     }
 
@@ -16,7 +16,6 @@ public class PlayerJumpState : PlayerAbilityState
     public override void Enter()
     {
         base.Enter();
-        player.BaseJump();
     }
 
     public override bool Equals(object obj)
@@ -27,6 +26,7 @@ public class PlayerJumpState : PlayerAbilityState
     public override void Exit()
     {
         base.Exit();
+        player.physics.ResetGravity();
     }
 
     public override int GetHashCode()
@@ -37,21 +37,14 @@ public class PlayerJumpState : PlayerAbilityState
     public override void LogicUpdate()
     {
         base.LogicUpdate();
-        
-        player.SetVelocityX(Input.x);
-        // if(player.physics.velocity.y<=0 && player.physics.On_ground){
-        //     stateMachine.ChangeState(player.IdleState);
-        // }
-        if(player.physics.velocity.y<=0){
-            if(player.physics.On_ground){
+        if(TouchingWall){
+            if(player.physics.velocity.y<=0 && player.physics.On_ground){
                 stateMachine.ChangeState(player.IdleState);
-            }else{
-                stateMachine.ChangeState(player.AirState);
             }
+        }else{
+            stateMachine.ChangeState(player.AirState);
         }
-        if(!player.Input.Jump_Input_Hold && player.physics.velocity.y > 0){
-            player.SetVelocityY(0);
-        }
+        
     }
 
     public override void PhysicsUpdate()

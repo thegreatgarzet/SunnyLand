@@ -15,9 +15,15 @@ public class Player : MonoBehaviour
     public PlayerInAirState AirState {get; private set;}
     public PlayerLandState LandState {get; private set;}
 
+    public PlayerWallClimbState ClimbState{get; private set;}
+    public PlayerWallGrabState GrabState{get; private set;}
+    public PlayerWallSlideState WSlideState{get; private set;}
+
     #endregion
     public Animator Anim;
     [SerializeField]PlayerData playerData;
+    [Header("CURRENT ANIMATION")]
+    public string CurrentAnimName;
     
     private void Awake() {
         StateMachine = new PlayerStateMachine();
@@ -28,8 +34,11 @@ public class Player : MonoBehaviour
             IdleState = new PlayerIdleState(this, StateMachine, playerData, "idle");
             MoveState = new PlayerMoveState(this, StateMachine, playerData, "move");
             JumpState = new PlayerJumpState(this, StateMachine, playerData, "jump");
-            AirState = new PlayerInAirState(this, StateMachine, playerData, "inair");
+            AirState = new PlayerInAirState(this, StateMachine, playerData, "jump");
             LandState = new PlayerLandState(this, StateMachine, playerData, "land");
+            ClimbState = new PlayerWallClimbState(this, StateMachine, playerData, "climb");
+            GrabState = new PlayerWallGrabState(this, StateMachine, playerData, "grab");
+            WSlideState = new PlayerWallSlideState(this, StateMachine, playerData, "slide");
         //
     }
     void Start(){
@@ -39,6 +48,7 @@ public class Player : MonoBehaviour
         StateMachine.CurrentState.LogicUpdate();
         StateMachine.CurrentState.PhysicsUpdate();
         UpdateAnimValues();
+        CurrentAnimName = StateMachine.CurrentState.ToString();
     }
     public void SetVelocityX(float x){
         physics.velocity.x = x * playerData.moveSpeed;
@@ -51,5 +61,9 @@ public class Player : MonoBehaviour
     }
     void UpdateAnimValues(){
         Anim.SetFloat("y", physics.velocity.y);
+    }
+    public void PlayerSetValues(PlayerData data){
+        physics.gravity = data.gravity;
+        
     }
 }

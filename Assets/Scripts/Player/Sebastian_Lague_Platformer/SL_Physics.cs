@@ -15,16 +15,18 @@ public class SL_Physics : MonoBehaviour
 	public Vector2 wallJumpOff;
 	public Vector2 wallLeap;
     public float gravity;
-    float ref_gravity;
+    [SerializeField]float ref_gravity;
 	float maxJumpVelocity;
 	float minJumpVelocity;
 	public Vector3 velocity;
     float dir_input;
     public bool can_flip=true;
     public bool On_ground{get;private set;}
-    Controller2D controller;
+    
+    public Controller2D controller;
+    private object player;
 
-	void Awake() {
+    void Awake() {
         controller = GetComponent<Controller2D> ();
 		ref_gravity = gravity = -(2 * maxJumpHeight) / Mathf.Pow (timeToJumpApex, 2);
 		maxJumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
@@ -34,6 +36,7 @@ public class SL_Physics : MonoBehaviour
     void Update(){
         CalculateVelocity ();
         On_ground = controller.collisions.below;
+        
     }
     public void CalculateVelocity (){
         
@@ -41,6 +44,7 @@ public class SL_Physics : MonoBehaviour
         controller.Move (velocity * Time.deltaTime, Vector2.zero);
         if (controller.collisions.above || controller.collisions.below) {
 			velocity.y = 0;
+            
 		}
     }
     public void SetDirInput(float dir){
@@ -49,11 +53,16 @@ public class SL_Physics : MonoBehaviour
     public void SetSpeed(){
 
     }
-    public void ResetGravity(){
-
-    }
+    
     public void ResetSpeed(){
 
+    }
+    public void SetGravity(float g){
+        gravity = g;
+    }
+    public void ResetGravity(){
+        print("Gravity Reset");
+        gravity = ref_gravity;
     }
     public void Flip(int x){
         if(x!=0 && can_flip){
@@ -61,4 +70,5 @@ public class SL_Physics : MonoBehaviour
         }
         
     }
+   
 }
