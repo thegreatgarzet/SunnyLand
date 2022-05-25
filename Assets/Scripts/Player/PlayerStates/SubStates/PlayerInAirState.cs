@@ -45,7 +45,7 @@ public class PlayerInAirState : PlayerState
         
         
         player.SetVelocityX(Input.x);
-        
+        player.physics.Flip((int)Input.x);
         if(TouchingWall){
             if(Grab_Input){
                 stateMachine.ChangeState(player.GrabState);
@@ -63,9 +63,10 @@ public class PlayerInAirState : PlayerState
             }
       
             
-            if(player.physics.velocity.y<=0 && player.physics.On_ground){
-                stateMachine.ChangeState(player.IdleState);
-            }
+            // if(player.physics.velocity.y<=0 && player.physics.On_ground){
+            //     stateMachine.ChangeState(player.IdleState);
+            // }
+            player.TryIdle();
         }
         
        

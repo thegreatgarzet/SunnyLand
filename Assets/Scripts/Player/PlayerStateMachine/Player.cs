@@ -19,6 +19,8 @@ public class Player : MonoBehaviour
     public PlayerWallGrabState GrabState{get; private set;}
     public PlayerWallSlideState WSlideState{get; private set;}
 
+    public PlayerWallJumpStateLoA WallJumpState{get; private set;}
+
     #endregion
     public Animator Anim;
     [SerializeField]PlayerData playerData;
@@ -39,6 +41,7 @@ public class Player : MonoBehaviour
             ClimbState = new PlayerWallClimbState(this, StateMachine, playerData, "climb");
             GrabState = new PlayerWallGrabState(this, StateMachine, playerData, "grab");
             WSlideState = new PlayerWallSlideState(this, StateMachine, playerData, "slide");
+            WallJumpState =  new PlayerWallJumpStateLoA(this, StateMachine, playerData, "jump");
         //
     }
     void Start(){
@@ -65,5 +68,13 @@ public class Player : MonoBehaviour
     public void PlayerSetValues(PlayerData data){
         physics.gravity = data.gravity;
         
+    }
+    public bool TryIdle(){
+        if(physics.velocity.y<=0 && physics.On_ground){
+            StateMachine.ChangeState(IdleState);
+            return true;
+        }else{
+            return false;
+        }
     }
 }

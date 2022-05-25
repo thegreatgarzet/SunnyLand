@@ -39,6 +39,7 @@ public class PlayerJumpState : PlayerAbilityState
         base.LogicUpdate();
         
         player.SetVelocityX(Input.x);
+        player.physics.Flip((int)Input.x);
         // if(player.physics.velocity.y<=0 && player.physics.On_ground){
         //     stateMachine.ChangeState(player.IdleState);
         // }
