@@ -35,9 +35,8 @@ public class PlayerWallSlideState : PlayerOnWallState
 
     public override void LogicUpdate()
     {
-        player.SetVelocityY(-1);
         base.LogicUpdate();
-        
+        player.SetVelocityY(-1);
         if(Grab_Input){
             stateMachine.ChangeState(player.GrabState);
         }

@@ -41,13 +41,6 @@ public class PlayerOnWallState : PlayerState
             if(player.physics.velocity.y<=0 && player.physics.On_ground){
                 stateMachine.ChangeState(player.IdleState);
             }
-            if(JumpInput){
-                player.Input.UseJumpInput();
-                
-                stateMachine.ChangeState(player.WallJumpState);
-                
-                Debug.Log("Velocity" + player.physics.velocity);
-            }
         }else{
             stateMachine.ChangeState(player.AirState);
         }

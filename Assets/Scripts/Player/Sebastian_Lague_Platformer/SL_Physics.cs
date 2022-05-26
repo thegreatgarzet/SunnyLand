@@ -68,10 +68,7 @@ public class SL_Physics : MonoBehaviour
         if(x!=0 && can_flip){
             transform.localScale = new Vector2(x, 1);
         }
+        
     }
-    public int Wall_dir(){
-        int dir = 0;
-        dir = controller.collisions.left?1:controller.collisions.right?-1:0;
-        return dir;
-    }
+   
 }
