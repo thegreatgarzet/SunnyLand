@@ -17,6 +17,7 @@ public class PlayerData : ScriptableObject {
     public bool EnableDoubleJump=true;
     [Header("Exposed Values")]
     public float WallSlide_Speed;
+    public float WallJump_Timer;
     
     [Header("Values changed on Enable")]
     public float maxJumpVelocity;

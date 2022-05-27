@@ -16,6 +16,9 @@ MonoBehaviour:
   minJumpHeight: 0.5
   timeToJumpApex: 0.4
   moveSpeed: 6
+  EnableDoubleJump: 1
+  WallSlide_Speed: 0
+  WallJump_Timer: 0.2
   maxJumpVelocity: 14.999999
   minJumpVelocity: 6.123724
   gravity: -37.499996
