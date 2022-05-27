@@ -27,6 +27,7 @@ public class SL_Physics : MonoBehaviour
     private object player;
 
     void Awake() {
+        
         controller = GetComponent<Controller2D> ();
 		ref_gravity = gravity = -(2 * maxJumpHeight) / Mathf.Pow (timeToJumpApex, 2);
 		maxJumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
@@ -51,7 +52,7 @@ public class SL_Physics : MonoBehaviour
         dir_input = dir;
     }
     public void SetSpeed(){
-
+        
     }
     
     public void ResetSpeed(){
@@ -68,7 +69,10 @@ public class SL_Physics : MonoBehaviour
         if(x!=0 && can_flip){
             transform.localScale = new Vector2(x, 1);
         }
-        
     }
-   
+    public int Wall_dir(){
+        int dir = 0;
+        dir = controller.collisions.left?1:controller.collisions.right?-1:0;
+        return dir;
+    }
 }

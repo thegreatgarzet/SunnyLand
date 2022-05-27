@@ -17,6 +17,8 @@ MonoBehaviour:
   timeToJumpApex: 0.4
   moveSpeed: 6
   EnableDoubleJump: 1
+  GrabStair_Timer: 0.1
+  StairClimb_Speed: 2
   WallSlide_Speed: 0
   WallJump_Timer: 0.2
   maxJumpVelocity: 14.999999

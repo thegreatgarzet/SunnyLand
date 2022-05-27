@@ -39,6 +39,7 @@ public class PlayerJumpState : PlayerAbilityState
         base.LogicUpdate();
         
         player.SetVelocityX(Input.x);
+        player.physics.Flip((int)Input.x);
         // if(player.physics.velocity.y<=0 && player.physics.On_ground){
         //     stateMachine.ChangeState(player.IdleState);
         // }
@@ -48,7 +49,9 @@ public class PlayerJumpState : PlayerAbilityState
             }else{
                 stateMachine.ChangeState(player.AirState);
             }
-        }
+        }else if(player.Stair != null && Input.y >0 && Time.time >= startTime + playerData.GrabStair_Timer){
+                stateMachine.ChangeState(player.OnStairState);
+            }
         if(!player.Input.Jump_Input_Hold && player.physics.velocity.y > 0){
             player.SetVelocityY(0);
         }

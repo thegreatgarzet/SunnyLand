@@ -8,6 +8,7 @@ public class PlayerState{
     protected Vector2 Input;
     public bool JumpInput, Grab_Input;
     public bool TouchingWall;
+    
     protected PlayerData playerData;
     protected float startTime;
     private string animBoolName;

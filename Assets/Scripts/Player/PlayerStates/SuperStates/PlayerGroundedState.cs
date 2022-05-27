@@ -52,6 +52,8 @@ public class PlayerGroundedState : PlayerState
             
             }else if(Grab_Input && TouchingWall){
                 stateMachine.ChangeState(player.GrabState);
+            }else if(player.Stair != null && Input.y >0){
+                stateMachine.ChangeState(player.OnStairState);
             }
         }
         

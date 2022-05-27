@@ -19,6 +19,11 @@ public class Player : MonoBehaviour
     public PlayerWallGrabState GrabState{get; private set;}
     public PlayerWallSlideState WSlideState{get; private set;}
 
+    public PlayerWallJumpStateLoA WallJumpState{get; private set;}
+
+    public PlayerOnStairState OnStairState{get; private set;}
+    public Transform Stair;
+
     #endregion
     public Animator Anim;
     [SerializeField]PlayerData playerData;
@@ -39,11 +44,14 @@ public class Player : MonoBehaviour
             ClimbState = new PlayerWallClimbState(this, StateMachine, playerData, "climb");
             GrabState = new PlayerWallGrabState(this, StateMachine, playerData, "grab");
             WSlideState = new PlayerWallSlideState(this, StateMachine, playerData, "slide");
+            WallJumpState =  new PlayerWallJumpStateLoA(this, StateMachine, playerData, "jump");
+
+            
+            OnStairState = new PlayerOnStairState(this, StateMachine, playerData, "stair_idle");
         //
     }
     void Start(){
         StateMachine.Initialize(IdleState);
-        
     }
     void Update(){
         StateMachine.CurrentState.LogicUpdate();
@@ -66,5 +74,25 @@ public class Player : MonoBehaviour
     public void PlayerSetValues(PlayerData data){
         physics.gravity = data.gravity;
         
+    }
+    public bool TryIdle(){
+        if(physics.velocity.y<=0 && physics.On_ground){
+            StateMachine.ChangeState(IdleState);
+            return true;
+        }else{
+            return false;
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.CompareTag("stair")){
+            Stair = other.transform;
+        }
+    }
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if(other.CompareTag("stair")){
+            Stair = null;
+        }
     }
 }

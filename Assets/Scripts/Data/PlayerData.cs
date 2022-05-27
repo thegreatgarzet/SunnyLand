@@ -15,9 +15,11 @@ public class PlayerData : ScriptableObject {
 	[Header("MOVEMENT")]
 	public float moveSpeed = 6;
     public bool EnableDoubleJump=true;
+    [Header("Stair")]
+    public float GrabStair_Timer = .1f;
+    public float StairClimb_Speed = 1;
     [Header("Exposed Values")]
-    public float WallSlide_Speed;
-    public float WallJump_Timer;
+    public float WallSlide_Speed, WallJump_Timer;
     
     [Header("Values changed on Enable")]
     public float maxJumpVelocity;
