@@ -54,8 +54,12 @@ public class PlayerInAirState : PlayerState
             }
             
         }else{
-            if(EnableDoubleJump){
-                if(JumpInput && !doubleJumped){
+            if(JumpInput){
+                if(player.physics.Wall_dir()!=0){
+                    player.Input.UseJumpInput();
+                    stateMachine.ChangeState(player.WallJumpState);
+                }
+                else if(EnableDoubleJump && !doubleJumped){
                     doubleJumped =true;
                     player.Input.UseJumpInput();
                     stateMachine.ChangeState(player.JumpState);
