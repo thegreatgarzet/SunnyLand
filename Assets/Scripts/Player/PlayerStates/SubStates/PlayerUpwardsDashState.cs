@@ -11,8 +11,11 @@ public class PlayerUpwardsDashState : PlayerAbilityState
     public override void Enter()
     {
         base.Enter();
+        player.physics.SetGravity(0);
+
         player.SetVelocityX(0);
-        
+
+        player.SetVelocityY(-.1f);        
 
     }
     public override void Exit()
@@ -23,6 +26,10 @@ public class PlayerUpwardsDashState : PlayerAbilityState
     public override void LogicUpdate()
     {
         base.LogicUpdate();
+        if(!Dash_Hold){
+            stateMachine.ChangeState(player.AirState);
+            
+        }else
         if(Time.time >= startTime + playerData.AirDash_Anim_Timer){
             player.BaseJump();
             stateMachine.ChangeState(player.AirState);

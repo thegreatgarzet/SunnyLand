@@ -8,6 +8,7 @@ public class PlayerState{
     protected Vector2 Input;
     public bool JumpInput, Grab_Input, Dash_Input, Dash_Hold;
     public bool TouchingWall;
+    public bool isExitingState;
     
     protected PlayerData playerData;
     protected float startTime;
@@ -25,6 +26,7 @@ public class PlayerState{
         player.Anim.Play(animBoolName);
         startTime = Time.time;
         Debug.Log(animBoolName);
+        isExitingState = false;
     }
     public virtual void Exit(){
         

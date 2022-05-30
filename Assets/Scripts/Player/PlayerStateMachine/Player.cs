@@ -36,10 +36,17 @@ public class Player : MonoBehaviour
     public PlayerOnStairState OnStairState{get; private set;}
     [TabGroup("STATES")]
     public PlayerDashManagerState DashManagerState{get; private set;}
+    [TabGroup("STATES")]
+    public PlayerCrouchIdleState CrouchIdleState{get; private set;}
+    [TabGroup("STATES")]
+    public PlayerCrouchMoveState CrouchMoveState{get; private set;}
     #endregion
     public Transform Stair;
     public Animator Anim;
     [SerializeField]PlayerData playerData;
+    public GhostSprites ghost_fx;
+    
+    
     [TabGroup("MODIFIERS")]
     public Status_Modifier Dash_Modifier;
     [Header("CURRENT ANIMATION")]
@@ -50,12 +57,17 @@ public class Player : MonoBehaviour
         Input = GetComponent<InputManager>();
         Anim = GetComponent<Animator>();
         physics = GetComponent<SL_Physics>();
+        ghost_fx = GetComponent<GhostSprites>();
+        ghost_fx.renderOnMotion = false;
         //CREATE STATES
             IdleState = new PlayerIdleState(this, StateMachine, playerData, "idle");
             MoveState = new PlayerMoveState(this, StateMachine, playerData, "move");
             JumpState = new PlayerJumpState(this, StateMachine, playerData, "jump");
             AirState = new PlayerInAirState(this, StateMachine, playerData, "jump");
             LandState = new PlayerLandState(this, StateMachine, playerData, "land");
+
+            CrouchIdleState = new PlayerCrouchIdleState(this, StateMachine, playerData, "crouch");
+            CrouchMoveState = new PlayerCrouchMoveState(this, StateMachine, playerData, "crouchmove");
 
             ClimbState = new PlayerWallClimbState(this, StateMachine, playerData, "climb");
             GrabState = new PlayerWallGrabState(this, StateMachine, playerData, "grab");

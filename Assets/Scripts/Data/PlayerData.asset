@@ -26,6 +26,6 @@ MonoBehaviour:
   StairClimb_Speed: 2
   Dash_Timer: 0.3
   Dash_Multiplier: 1.2
-  AirDash_Anim_Timer: 0.1
+  AirDash_Anim_Timer: 0.2
   WallSlide_Speed: 0
   WallJump_Timer: 0.2

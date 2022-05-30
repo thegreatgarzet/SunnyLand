@@ -20,6 +20,7 @@ public class PlayerGroundedState : PlayerState
     {
         base.Enter();
         player.physics.RemoveMod(player.Dash_Modifier);
+        player.ghost_fx.renderOnMotion = false;
         player.DashManagerState.can_dash = true;
         player.AirState.doubleJumped = false;
     }
@@ -51,6 +52,7 @@ public class PlayerGroundedState : PlayerState
             if(Dash_Input){
                 player.Input.UseDashInput();
                 stateMachine.ChangeState(player.DashManagerState);
+                isExitingState = true;
             }else
             if(JumpInput){
                 player.Input.UseJumpInput();

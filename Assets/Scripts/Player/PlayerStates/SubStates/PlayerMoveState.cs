@@ -38,6 +38,10 @@ public class PlayerMoveState : PlayerGroundedState
         base.LogicUpdate();
         if(Input.x == 0){
             stateMachine.ChangeState(player.IdleState);
+        }else{
+            if(Input.y<0){
+                stateMachine.ChangeState(player.CrouchMoveState);
+            }
         }
         
     }

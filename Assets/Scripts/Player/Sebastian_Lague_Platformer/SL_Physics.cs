@@ -31,9 +31,11 @@ public class SL_Physics : MonoBehaviour
     public Controller2D controller;
     private object player;
     private List<Status_Modifier> modifiers;
+    Rigidbody2D rb;
 
     void Awake() {
         modifiers = new List<Status_Modifier>();
+        rb = GetComponent<Rigidbody2D>(); 
         controller = GetComponent<Controller2D> ();
 		ref_gravity = gravity = -(2 * maxJumpHeight) / Mathf.Pow (timeToJumpApex, 2);
 		maxJumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
@@ -49,6 +51,7 @@ public class SL_Physics : MonoBehaviour
     public void CalculateVelocity (){
         
 		velocity.y += gravity * Time.deltaTime;
+        rb.velocity = velocity;
         controller.Move (velocity * Time.deltaTime, Vector2.zero);
         if (controller.collisions.above || controller.collisions.below) {
 			velocity.y = 0;

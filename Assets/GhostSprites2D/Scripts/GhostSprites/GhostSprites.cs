@@ -223,9 +223,8 @@ public class GhostSprites : MonoBehaviour
 	
 	private void Populate(Vector3 position, bool allowPositionOverride)
 	{
-		if(RenderOnMotion 
-		   && hasRigidBody2D 
-		   && gameObject.GetComponent<Rigidbody2D>().velocity == Vector2.zero 
+		if(!RenderOnMotion 
+		    
 		   && !allowPositionOverride)
 		{
 			if(ghostList.Count > 0){

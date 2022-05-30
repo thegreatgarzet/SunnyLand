@@ -26,7 +26,7 @@ public class PlayerDashManagerState : PlayerAbilityState
     {
         base.Enter();
         can_dash = false;
-        
+        player.ghost_fx.renderOnMotion = true;
         if(player.Input.GetDirInput().y>0){
             Debug.Log("Teste");
             stateMachine.ChangeState(UpDashState);

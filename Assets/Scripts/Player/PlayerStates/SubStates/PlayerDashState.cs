@@ -22,6 +22,7 @@ public class PlayerDashState : PlayerAbilityState
             ground_dash=true;
         }
         player.SetVelocityX(player.transform.localScale.x * playerData.Dash_Multiplier);
+        Debug.Log(player.transform.localScale.x * playerData.Dash_Multiplier);
     }
 
     public override void Exit()
