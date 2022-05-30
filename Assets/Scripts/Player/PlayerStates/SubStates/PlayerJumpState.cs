@@ -43,15 +43,22 @@ public class PlayerJumpState : PlayerAbilityState
         // if(player.physics.velocity.y<=0 && player.physics.On_ground){
         //     stateMachine.ChangeState(player.IdleState);
         // }
+        if(Dash_Input){
+            player.Input.UseDashInput();
+            if(player.DashManagerState.can_dash){
+                stateMachine.ChangeState(player.DashManagerState);
+            }
+        }else
         if(player.physics.velocity.y<=0){
             if(player.physics.On_ground){
                 stateMachine.ChangeState(player.IdleState);
             }else{
                 stateMachine.ChangeState(player.AirState);
             }
-        }else if(player.Stair != null && Input.y >0 && Time.time >= startTime + playerData.GrabStair_Timer){
-                stateMachine.ChangeState(player.OnStairState);
-            }
+        }else 
+        if(player.Stair != null && Input.y >0 && Time.time >= startTime + playerData.GrabStair_Timer){
+            stateMachine.ChangeState(player.OnStairState);
+        }
         if(!player.Input.Jump_Input_Hold && player.physics.velocity.y > 0){
             player.SetVelocityY(0);
         }

@@ -1,32 +1,47 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Sirenix.OdinInspector;
 public class Player : MonoBehaviour
 {
     public InputManager Input;
     public SL_Physics physics;
+    
     #region STATE MACHINE SHENANIGANS
+    [TabGroup("STATES")]
     public PlayerStateMachine StateMachine{get; private set;}
+    [TabGroup("STATES")]
     //STATES
     public PlayerIdleState IdleState {get; private set;}
+    [TabGroup("STATES")]
     public PlayerMoveState MoveState {get; private set;}
+    [TabGroup("STATES")]
     public PlayerJumpState JumpState {get; private set;}
+    [TabGroup("STATES")]
     public PlayerInAirState AirState {get; private set;}
+    [TabGroup("STATES")]
     public PlayerLandState LandState {get; private set;}
+    [TabGroup("STATES")]
 
     public PlayerWallClimbState ClimbState{get; private set;}
+    [TabGroup("STATES")]
     public PlayerWallGrabState GrabState{get; private set;}
+    [TabGroup("STATES")]
     public PlayerWallSlideState WSlideState{get; private set;}
+    [TabGroup("STATES")]
 
     public PlayerWallJumpStateLoA WallJumpState{get; private set;}
+    [TabGroup("STATES")]
 
     public PlayerOnStairState OnStairState{get; private set;}
-    public Transform Stair;
-
+    [TabGroup("STATES")]
+    public PlayerDashManagerState DashManagerState{get; private set;}
     #endregion
+    public Transform Stair;
     public Animator Anim;
     [SerializeField]PlayerData playerData;
+    [TabGroup("MODIFIERS")]
+    public Status_Modifier Dash_Modifier;
     [Header("CURRENT ANIMATION")]
     public string CurrentAnimName;
     
@@ -41,6 +56,7 @@ public class Player : MonoBehaviour
             JumpState = new PlayerJumpState(this, StateMachine, playerData, "jump");
             AirState = new PlayerInAirState(this, StateMachine, playerData, "jump");
             LandState = new PlayerLandState(this, StateMachine, playerData, "land");
+
             ClimbState = new PlayerWallClimbState(this, StateMachine, playerData, "climb");
             GrabState = new PlayerWallGrabState(this, StateMachine, playerData, "grab");
             WSlideState = new PlayerWallSlideState(this, StateMachine, playerData, "slide");
@@ -48,6 +64,10 @@ public class Player : MonoBehaviour
 
             
             OnStairState = new PlayerOnStairState(this, StateMachine, playerData, "stair_idle");
+
+            DashManagerState = new PlayerDashManagerState(this, StateMachine, playerData, "dash");
+            DashManagerState.Dash_Mod = Dash_Modifier;
+            
         //
     }
     void Start(){
@@ -60,7 +80,7 @@ public class Player : MonoBehaviour
         CurrentAnimName = StateMachine.CurrentState.ToString();
     }
     public void SetVelocityX(float x){
-        physics.velocity.x = x * playerData.moveSpeed;
+        physics.velocity.x = x * physics.move_speed;
     }
     public void SetVelocityY(float y){
         physics.velocity.y = y;
@@ -75,6 +95,7 @@ public class Player : MonoBehaviour
         physics.gravity = data.gravity;
         
     }
+    
     public bool TryIdle(){
         if(physics.velocity.y<=0 && physics.On_ground){
             StateMachine.ChangeState(IdleState);

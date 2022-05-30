@@ -1,3 +1,4 @@
+
 /*
     Criado por Garzet Dev
 
@@ -15,8 +16,9 @@ public class InputManager : MonoBehaviour
    
     public bool Jump_Input, Jump_Input_Hold;
     public bool Grab_Input, Grab_Input_Hold;
+    public bool Dash_Input, Dash_Input_Hold;
     
-    Vector2 Dir_input;
+    [SerializeField]Vector2 Dir_input;
     InputAction.CallbackContext jump_context;
     public void GetMove(InputAction.CallbackContext context){
         Vector2 raw_input = context.ReadValue<Vector2>();
@@ -46,6 +48,17 @@ public class InputManager : MonoBehaviour
             
         }
     }
+    public void GetDashInput(InputAction.CallbackContext context){
+        
+        if(context.started){
+            Dash_Input_Hold = Dash_Input = true;
+            
+        }
+        if(context.canceled){
+            Dash_Input_Hold = Dash_Input = false;
+            
+        }
+    }
     public Vector2 GetDirInput(){
         return Dir_input;
     }
@@ -53,6 +66,7 @@ public class InputManager : MonoBehaviour
         return jump_context;
     }
     public void UseJumpInput() => Jump_Input = false;
+    public void UseDashInput() => Dash_Input = false;
     void Update(){
         if(Input.GetKeyDown(KeyCode.F)){
             SceneManager.LoadScene(0);

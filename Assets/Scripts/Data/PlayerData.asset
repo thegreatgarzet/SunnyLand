@@ -15,13 +15,17 @@ MonoBehaviour:
   maxJumpHeight: 3
   minJumpHeight: 0.5
   timeToJumpApex: 0.4
-  moveSpeed: 6
-  EnableDoubleJump: 1
-  GrabStair_Timer: 0.1
-  StairClimb_Speed: 2
-  WallSlide_Speed: 0
-  WallJump_Timer: 0.2
   maxJumpVelocity: 14.999999
   minJumpVelocity: 6.123724
   gravity: -37.499996
   ref_gravity: -37.499996
+  moveSpeed: 6
+  BasemoveSpeed: 6
+  EnableDoubleJump: 1
+  GrabStair_Timer: 0.1
+  StairClimb_Speed: 2
+  Dash_Timer: 0.3
+  Dash_Multiplier: 1.2
+  AirDash_Anim_Timer: 0.1
+  WallSlide_Speed: 0
+  WallJump_Timer: 0.2

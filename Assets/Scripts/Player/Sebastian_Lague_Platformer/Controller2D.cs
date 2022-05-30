@@ -163,7 +163,9 @@ public class Controller2D : RaycastController {
 			collisions.below = true;
 			collisions.climbingSlope = true;
 			collisions.slopeAngle = slopeAngle;
+			
 		}
+		
 	}
 
 	void DescendSlope(ref Vector3 velocity) {

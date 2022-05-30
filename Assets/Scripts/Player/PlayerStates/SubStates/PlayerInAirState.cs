@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem.Interactions;
 
 public class PlayerInAirState : PlayerState
 {
@@ -41,9 +42,8 @@ public class PlayerInAirState : PlayerState
     public override void LogicUpdate()
     {
         base.LogicUpdate();
-        
-        
-        
+
+    
         player.SetVelocityX(Input.x);
         player.physics.Flip((int)Input.x);
         if(TouchingWall){
@@ -54,6 +54,12 @@ public class PlayerInAirState : PlayerState
             }
             
         }else{
+            if(Dash_Input){
+                player.Input.UseDashInput();
+                if(player.DashManagerState.can_dash){
+                    stateMachine.ChangeState(player.DashManagerState);
+                }
+            }else
             if(JumpInput){
                 
                 if(player.physics.Wall_dir()!=0){

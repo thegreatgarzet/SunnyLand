@@ -148,7 +148,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 39886072}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8, y: 4.5, z: 0}
+  m_LocalPosition: {x: -8, y: 65, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -282,7 +282,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 80685348}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3, y: -2.5, z: 550}
+  m_LocalPosition: {x: 3, y: 58, z: 550}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -353,7 +353,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.778125, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -370,7 +370,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 162109581}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 31.77, y: -6, z: -10}
+  m_LocalPosition: {x: 53, y: 56, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -429,7 +429,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 353086448}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 38.5, y: -4.5, z: 0.42641455}
+  m_LocalPosition: {x: 38.5, y: 56, z: 0.42641455}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -529,7 +529,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2660258489118142378, guid: 3e10899e810ab8e419deb8dfce74bbea, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5
+      value: 65.5
       objectReference: {fileID: 0}
     - target: {fileID: 2660258489118142378, guid: 3e10899e810ab8e419deb8dfce74bbea, type: 3}
       propertyPath: m_LocalPosition.z
@@ -882,7 +882,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 31.77, y: -6, z: -10}
+  m_LocalPosition: {x: 53, y: 56, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1096,6 +1096,7 @@ GameObject:
   - component: {fileID: 1162489043}
   - component: {fileID: 1162489044}
   - component: {fileID: 1162489045}
+  - component: {fileID: 1162489046}
   m_Layer: 0
   m_Name: player
   m_TagString: Untagged
@@ -1163,7 +1164,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1162489035}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 31.77, y: -6, z: 0}
+  m_LocalPosition: {x: 53, y: 56, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1206,6 +1207,7 @@ MonoBehaviour:
   maxJumpHeight: 4
   minJumpHeight: 1
   timeToJumpApex: 0.4
+  move_speed: 6
   wallJumpClimb: {x: 0, y: 0}
   wallJumpOff: {x: 0, y: 0}
   wallLeap: {x: 0, y: 0}
@@ -1213,6 +1215,7 @@ MonoBehaviour:
   ref_gravity: 0
   velocity: {x: 0, y: 0, z: 0}
   can_flip: 1
+  On_ground: 0
   controller: {fileID: 0}
 --- !u!61 &1162489040
 BoxCollider2D:
@@ -1334,6 +1337,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 7b133296-bfd5-4063-bea7-dd602eca7ca9
     m_ActionName: PlayerActions/Grab[/Keyboard/c,/XInputControllerWindows/buttonEast]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1162489043}
+        m_TargetAssemblyTypeName: InputManager, Assembly-CSharp
+        m_MethodName: GetDashInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 5a35a39d-6c59-461b-9cf7-a1284083cd5b
+    m_ActionName: PlayerActions/Dash[/Keyboard/v,/XInputControllerWindows/leftShoulder]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerActions
@@ -1355,6 +1374,9 @@ MonoBehaviour:
   Jump_Input_Hold: 0
   Grab_Input: 0
   Grab_Input_Hold: 0
+  Dash_Input: 0
+  Dash_Input_Hold: 0
+  Dir_input: {x: 0, y: 0}
 --- !u!95 &1162489044
 Animator:
   serializedVersion: 4
@@ -1392,7 +1414,29 @@ MonoBehaviour:
   Stair: {fileID: 0}
   Anim: {fileID: 0}
   playerData: {fileID: 11400000, guid: b6fd0fe13a5001b44a55ded086de7ef8, type: 2}
+  Dash_Modifier: {fileID: 11400000, guid: 742ad90429e072f45836e630b75a4539, type: 2}
   CurrentAnimName: 
+--- !u!114 &1162489046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1162489035}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2251b651ddeed2489815f26b026e905, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trailSize: 8
+  spacing: 2
+  color: {r: 0, g: 0.36192858, b: 0.6792453, a: 0.6392157}
+  ghostMaterial: []
+  ghostSpriteSortingOrder: 4
+  renderOnMotion: 0
+  colorAlphaOverride: 0
+  alphaFluctuationOverride: 0
+  alphaFluctuationDivisor: 0
 --- !u!1 &1301171683
 GameObject:
   m_ObjectHideFlags: 0
@@ -1444,7 +1488,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1301171683}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 84.5, y: -13.5, z: 0.42641455}
+  m_LocalPosition: {x: 84.5, y: 47, z: 0.42641455}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

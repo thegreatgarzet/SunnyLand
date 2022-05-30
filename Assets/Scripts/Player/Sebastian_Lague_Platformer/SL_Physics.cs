@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 /*
     THIS SCRIPT IS A CUSTOM VERSION OF SEBASTIAN LAGUE PLATFORM CONTROLLER. ALL CREDITS GOES TO HIM, AS I
@@ -11,6 +12,10 @@ public class SL_Physics : MonoBehaviour
     public float maxJumpHeight = 4;
 	public float minJumpHeight = 1;
     public float timeToJumpApex = .4f;
+
+    public float move_speed;
+    float base_movespeed;
+
 	public Vector2 wallJumpClimb;
 	public Vector2 wallJumpOff;
 	public Vector2 wallLeap;
@@ -21,17 +26,19 @@ public class SL_Physics : MonoBehaviour
 	public Vector3 velocity;
     float dir_input;
     public bool can_flip=true;
-    public bool On_ground{get;private set;}
+    [SerializeField]public bool On_ground;
     
     public Controller2D controller;
     private object player;
+    private List<Status_Modifier> modifiers;
 
     void Awake() {
-        
+        modifiers = new List<Status_Modifier>();
         controller = GetComponent<Controller2D> ();
 		ref_gravity = gravity = -(2 * maxJumpHeight) / Mathf.Pow (timeToJumpApex, 2);
 		maxJumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
 		minJumpVelocity = Mathf.Sqrt (2 * Mathf.Abs (gravity) * minJumpHeight);    
+        base_movespeed = move_speed;
     }
 
     void Update(){
@@ -51,12 +58,12 @@ public class SL_Physics : MonoBehaviour
     public void SetDirInput(float dir){
         dir_input = dir;
     }
-    public void SetSpeed(){
+    public void SetSpeed(float x){
         
     }
     
     public void ResetSpeed(){
-
+        move_speed = base_movespeed;
     }
     public void SetGravity(float g){
         gravity = g;
@@ -74,5 +81,17 @@ public class SL_Physics : MonoBehaviour
         int dir = 0;
         dir = controller.collisions.left?1:controller.collisions.right?-1:0;
         return dir;
+    }
+    public void AddModofier(Status_Modifier mod){
+        if(mod.using_mod)
+            return;
+        move_speed += mod.Speed_Mod;
+        mod.using_mod = true;
+    }
+    public void RemoveMod(Status_Modifier mod){
+        if(!mod.using_mod)
+            return;
+        move_speed -= mod.Speed_Mod;
+        mod.using_mod = false;
     }
 }

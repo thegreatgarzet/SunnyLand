@@ -19,6 +19,8 @@ public class PlayerGroundedState : PlayerState
     public override void Enter()
     {
         base.Enter();
+        player.physics.RemoveMod(player.Dash_Modifier);
+        player.DashManagerState.can_dash = true;
         player.AirState.doubleJumped = false;
     }
 
@@ -43,9 +45,13 @@ public class PlayerGroundedState : PlayerState
         
         player.SetVelocityX(Input.x);
         player.physics.Flip((int)Input.x);
-        if(!player.physics.On_ground){
+        if(!player.physics.On_ground && player.physics.velocity.y<=-0.5f){
             stateMachine.ChangeState(player.AirState);
         }else{
+            if(Dash_Input){
+                player.Input.UseDashInput();
+                stateMachine.ChangeState(player.DashManagerState);
+            }else
             if(JumpInput){
                 player.Input.UseJumpInput();
                 stateMachine.ChangeState(player.JumpState);

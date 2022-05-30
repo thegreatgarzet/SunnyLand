@@ -6,7 +6,7 @@ public class PlayerState{
     protected Player player;
     protected PlayerStateMachine stateMachine;
     protected Vector2 Input;
-    public bool JumpInput, Grab_Input;
+    public bool JumpInput, Grab_Input, Dash_Input, Dash_Hold;
     public bool TouchingWall;
     
     protected PlayerData playerData;
@@ -32,6 +32,8 @@ public class PlayerState{
     public virtual void LogicUpdate(){
         JumpInput = player.Input.Jump_Input;
         Grab_Input = player.Input.Grab_Input;
+        Dash_Input = player.Input.Dash_Input;
+        Dash_Hold= player.Input.Dash_Input_Hold;
         Input = player.Input.GetDirInput();
         TouchingWall = player.physics.controller.collisions.left && Input.x<0 
         || player.physics.controller.collisions.right && Input.x>0?true:false;
