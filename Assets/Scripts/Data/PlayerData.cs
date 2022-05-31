@@ -16,10 +16,15 @@ public class PlayerData : ObjData {
     public float Dash_Timer=.3f;
     public float Dash_Multiplier = 1.2f;
     public float AirDash_Anim_Timer;
+    [Header("COLLIDER VALUES")]
+    public float Normal_Height;
+    public float Crouch_Height;
     [Header("Exposed Values")]
     public float WallSlide_Speed, WallJump_Timer;
-    
-    
-
-    
+ 
 }
+   [System.Serializable]
+    public struct ColliderValues{
+        public float y_offset;
+        public float y_height;
+    }

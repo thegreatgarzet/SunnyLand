@@ -27,5 +27,7 @@ MonoBehaviour:
   Dash_Timer: 0.3
   Dash_Multiplier: 1.2
   AirDash_Anim_Timer: 0.2
+  Normal_Height: 1.3
+  Crouch_Height: 0.65
   WallSlide_Speed: 0
   WallJump_Timer: 0.2
