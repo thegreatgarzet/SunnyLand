@@ -61,14 +61,14 @@ public class PlayerInAirState : PlayerState
                 }
             }else
             if(JumpInput){
-                
+                player.Input.UseJumpInput();
                 if(player.physics.Wall_dir()!=0){
-                    player.Input.UseJumpInput();
+                    
                     stateMachine.ChangeState(player.WallJumpState);
                 }
                 else if(EnableDoubleJump && !doubleJumped){
                     doubleJumped =true;
-                    player.Input.UseJumpInput();
+                    
                     stateMachine.ChangeState(player.JumpState);
                 }
             }else if(player.Stair != null && Input.y >0 && Time.time >= startTime + playerData.GrabStair_Timer){

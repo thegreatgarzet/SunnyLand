@@ -140,15 +140,15 @@ public class Player : MonoBehaviour
     }
     public bool DetectCeiling(){
         bool ceiling = false;
-        float box_size = transform.position.x +(box.size.x/2)-.05f;
+        float box_size = (box.size.x/2)-.05f;
         float start_point = transform.position.y + box.size.y;
-        for (int i = -1; i < 1; i++)
+        for (int i = -1; i <= 1; i++)
         {
-            ceiling = Physics2D.Raycast(new Vector2(box_size * i, start_point), Vector2.up, .5f, physics.controller.collisionMask);
-            if(ceiling) 
-                Debug.Log("Ceiling");
-                return ceiling;
-            
+            bool has_ceiling = Physics2D.Raycast(new Vector2(transform.position.x + (box_size * i), start_point), Vector2.up, .5f, physics.controller.collisionMask);
+            Debug.DrawRay(new Vector2(transform.position.x + (box_size * i), start_point), Vector2.up, Color.green);
+            if(has_ceiling){
+                ceiling = true;
+            } 
         }
         return ceiling;
     }

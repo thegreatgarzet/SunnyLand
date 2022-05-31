@@ -13,6 +13,7 @@ public class PlayerDashState : PlayerAbilityState
     public override void Enter()
     {
         base.Enter();
+        player.SetColliderHeight(playerData.Crouch_Height);
         ground_dash=false;
         player.physics.AddModofier(state_manager.Dash_Mod);
         if(!player.physics.On_ground){
@@ -28,7 +29,7 @@ public class PlayerDashState : PlayerAbilityState
     public override void Exit()
     {
         base.Exit();
-        
+        player.SetColliderHeight(playerData.Normal_Height);
         if(!ground_dash)    
             player.physics.ResetGravity();
     }
@@ -48,13 +49,27 @@ public class PlayerDashState : PlayerAbilityState
         }
         
         if(Time.time >= startTime + playerData.Dash_Timer || !Dash_Hold){
-            stateMachine.ChangeState(ground_dash?player.IdleState:player.AirState);
+            if(ground_dash){
+                if(player.DetectCeiling()){
+                    stateMachine.ChangeState(player.CrouchIdleState);    
+                }else{
+                    stateMachine.ChangeState(player.IdleState);
+                }
+            }else{
+                stateMachine.ChangeState(player.AirState);
+            }
         }
     }
     bool CheckJumpInput(){
         if(JumpInput){
             player.Input.UseJumpInput();
-            stateMachine.ChangeState(player.JumpState);
+            if(!player.AirState.doubleJumped){
+                if(!ground_dash){
+                    player.AirState.doubleJumped = true;
+                }
+                stateMachine.ChangeState(player.JumpState);
+            }
+            
             return true;
         }
         return false;
