@@ -46,6 +46,8 @@ public class PlayerGroundedState : PlayerState
         
         player.SetVelocityX(Input.x);
         player.physics.Flip((int)Input.x);
+        if(player.TryAttack())
+            return;
         if(!player.physics.On_ground && player.physics.velocity.y<=-0.5f){
             stateMachine.ChangeState(player.AirState);
         }else{

@@ -40,6 +40,9 @@ public class Player : MonoBehaviour
     public PlayerCrouchIdleState CrouchIdleState{get; private set;}
     [TabGroup("STATES")]
     public PlayerCrouchMoveState CrouchMoveState{get; private set;}
+    [TabGroup("STATES")]
+    public PlayerAttackState Primary{get; private set;}
+    public PlayerAttackState Secondary{get; private set;}
     #endregion
     public Transform Stair;
     public Animator Anim;
@@ -81,6 +84,8 @@ public class Player : MonoBehaviour
             DashManagerState = new PlayerDashManagerState(this, StateMachine, playerData, "dash");
             DashManagerState.Dash_Mod = Dash_Modifier;
             
+            Primary = new PlayerAttackState(this, StateMachine, playerData, "attack");
+            Secondary = new PlayerAttackState(this, StateMachine, playerData, "attack");
         //
     }
     void Start(){
@@ -116,6 +121,19 @@ public class Player : MonoBehaviour
         }else{
             return false;
         }
+    }
+    public bool TryAttack(){
+        if(DetectCeiling())
+            return false;
+        if(Input.AttackInputs[(int)CombatInputs.PRIMARY]){
+            StateMachine.ChangeState(Primary);
+            
+        }else
+        if(Input.AttackInputs[(int)CombatInputs.SECONDARY]){
+            StateMachine.ChangeState(Secondary);
+            
+        }
+        return true;
     }
     private void OnTriggerEnter2D(Collider2D other)
     {

@@ -46,6 +46,8 @@ public class PlayerInAirState : PlayerState
     
         player.SetVelocityX(Input.x);
         player.physics.Flip((int)Input.x);
+        if(player.TryAttack())
+            return;
         if(TouchingWall){
             if(Grab_Input){
                 stateMachine.ChangeState(player.GrabState);

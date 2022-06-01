@@ -4,6 +4,7 @@
 
     2017 - 2021
 */
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,6 +18,8 @@ public class InputManager : MonoBehaviour
     public bool Jump_Input, Jump_Input_Hold;
     public bool Grab_Input, Grab_Input_Hold;
     public bool Dash_Input, Dash_Input_Hold;
+
+    public bool[] AttackInputs{get;private set;}
     
     [SerializeField]Vector2 Dir_input;
     InputAction.CallbackContext jump_context;
@@ -65,11 +68,37 @@ public class InputManager : MonoBehaviour
     public InputAction.CallbackContext JumpContext(){
         return jump_context;
     }
+
+    public void GetPrimaryInput(InputAction.CallbackContext context){
+        if(context.started){
+            AttackInputs[(int)CombatInputs.PRIMARY] = true;
+        }
+        if(context.canceled){
+            AttackInputs[(int)CombatInputs.PRIMARY] = false;
+        }
+    }
+
+    public void GetSecondaryInput(InputAction.CallbackContext context){
+        if(context.started){
+            AttackInputs[(int)CombatInputs.SECONDARY] = true;
+        }
+        if(context.canceled){
+            AttackInputs[(int)CombatInputs.SECONDARY] = false;
+        }
+    }
     public void UseJumpInput() => Jump_Input = false;
     public void UseDashInput() => Dash_Input = false;
+    private void Awake()
+    {
+        int count = Enum.GetValues(typeof(CombatInputs)).Length;
+        AttackInputs = new bool[count];
+    }
     void Update(){
         if(Input.GetKeyDown(KeyCode.F)){
             SceneManager.LoadScene(0);
         }
     }
+}
+public enum CombatInputs{
+    PRIMARY, SECONDARY
 }

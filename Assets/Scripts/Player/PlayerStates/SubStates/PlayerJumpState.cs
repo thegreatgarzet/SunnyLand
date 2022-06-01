@@ -43,6 +43,8 @@ public class PlayerJumpState : PlayerAbilityState
         // if(player.physics.velocity.y<=0 && player.physics.On_ground){
         //     stateMachine.ChangeState(player.IdleState);
         // }
+        if(player.TryAttack())
+            return;
         if(Dash_Input){
             player.Input.UseDashInput();
             if(player.DashManagerState.can_dash){

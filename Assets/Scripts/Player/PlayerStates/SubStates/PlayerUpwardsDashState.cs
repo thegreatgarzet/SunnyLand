@@ -27,7 +27,7 @@ public class PlayerUpwardsDashState : PlayerAbilityState
     {
         base.LogicUpdate();
         if(!Dash_Hold){
-            stateMachine.ChangeState(player.AirState);
+            stateMachine.ChangeState(player.AirState); 
             
         }else
         if(Time.time >= startTime + playerData.AirDash_Anim_Timer){
