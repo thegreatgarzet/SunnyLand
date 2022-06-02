@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a569d9554f62734cad2cd3024c9dcb6, type: 3}
+  m_Name: climb
+  m_EditorClassIdentifier: 
+  animationName: animation
+  Name: climb
+  FPS: 8
+  Frames:
+  - Sprite: {fileID: 8893196165506387144, guid: 380b3e13f67888e4b9c7b7c58eb80aa6, type: 3}
+    EventName: 
+  - Sprite: {fileID: -4845072982172663169, guid: 380b3e13f67888e4b9c7b7c58eb80aa6, type: 3}
+    EventName: 
+  SpriteAnimationType: 0

@@ -353,7 +353,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.1876247, y: 1}
+    m_SensorSize: {x: 1.6699029, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -370,7 +370,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 162109581}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1, y: 55, z: -10}
+  m_LocalPosition: {x: -1, y: 56, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -882,7 +882,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.8742523, y: 55, z: -10}
+  m_LocalPosition: {x: 2.0194178, y: 56, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1097,6 +1097,7 @@ GameObject:
   - component: {fileID: 1162489044}
   - component: {fileID: 1162489045}
   - component: {fileID: 1162489046}
+  - component: {fileID: 1162489047}
   m_Layer: 0
   m_Name: player
   m_TagString: Untagged
@@ -1164,7 +1165,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1162489035}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1, y: 55, z: 0}
+  m_LocalPosition: {x: -1, y: 56, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1417,7 +1418,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1162489035}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: dc8c2349ad6d3bd4190d5b474b84c808, type: 2}
   m_CullingMode: 0
@@ -1445,6 +1446,7 @@ MonoBehaviour:
   physics: {fileID: 0}
   Stair: {fileID: 0}
   Anim: {fileID: 0}
+  sp_anim: {fileID: 0}
   playerData: {fileID: 11400000, guid: b6fd0fe13a5001b44a55ded086de7ef8, type: 2}
   ghost_fx: {fileID: 0}
   Dash_Modifier: {fileID: 11400000, guid: 742ad90429e072f45836e630b75a4539, type: 2}
@@ -1470,6 +1472,33 @@ MonoBehaviour:
   colorAlphaOverride: 0
   alphaFluctuationOverride: 0
   alphaFluctuationDivisor: 0
+--- !u!114 &1162489047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1162489035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e263bbdd52491641a3133bbaacda614, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spriteAnimations:
+  - {fileID: 11400000, guid: cc615ae5bc2d8644c9108f582b5a49e0, type: 2}
+  - {fileID: 11400000, guid: 19f4af091e1d51643a59353d050e43a6, type: 2}
+  - {fileID: 11400000, guid: 2e362cfeb40ed9244ad470d8176440f5, type: 2}
+  - {fileID: 11400000, guid: b796296c72086bf488dcb8122950e90a, type: 2}
+  - {fileID: 11400000, guid: 9058525eb053a154ca8a86cd36bb8956, type: 2}
+  - {fileID: 11400000, guid: f66743ab1ba93c542a8b6b1aa38929b5, type: 2}
+  - {fileID: 11400000, guid: 8301b56df6d565f4c9e7b4a19d109116, type: 2}
+  - {fileID: 11400000, guid: 8eeec86ec75f8f246821b54cb9c848cf, type: 2}
+  - {fileID: 11400000, guid: 54d58dbeed1437b41b65a007d0fdbfe5, type: 2}
+  - {fileID: 11400000, guid: 508998a1806b80342a9ee76408fddf33, type: 2}
+  - {fileID: 11400000, guid: acfd232a24e88bc49817d1a7d6c6d444, type: 2}
+  - {fileID: 11400000, guid: eece764397a9b454ebe31840e00d64dd, type: 2}
+  - {fileID: 11400000, guid: 97aa5067f29592b42aa4e02cc400c654, type: 2}
+  _playAutomatically: 0
 --- !u!1 &1274360450
 GameObject:
   m_ObjectHideFlags: 0

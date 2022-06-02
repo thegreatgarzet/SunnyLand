@@ -26,11 +26,11 @@ public class PlayerOnStairState : PlayerAbilityState
             }else{
                 player.SetVelocityY(Input.y * playerData.StairClimb_Speed);
                 if(Input.y!=0){
-                    player.Anim.Play("stair_moving");
+                    player.sp_anim.Play("stair_moving");
                     
                     
                 }else{
-                    player.Anim.Play("stair_idle");
+                    player.sp_anim.Play("stair_idle");
                     
                 }
             }

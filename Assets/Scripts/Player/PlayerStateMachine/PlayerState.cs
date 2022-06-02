@@ -23,7 +23,8 @@ public class PlayerState{
 
     public virtual void Enter(){
         DoCheck();
-        player.Anim.Play(animBoolName);
+        //player.Anim.Play(animBoolName);
+        player.sp_anim.Play(animBoolName);
         startTime = Time.time;
         Debug.Log(animBoolName);
         isExitingState = false;
