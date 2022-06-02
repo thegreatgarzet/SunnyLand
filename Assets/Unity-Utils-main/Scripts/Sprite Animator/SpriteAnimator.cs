@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using System;
+using UnityEngine.Events;
 
 namespace GabrielBigardi.SpriteAnimator
 {
     public class SpriteAnimator : MonoBehaviour
     {
+        //
         [SerializeField] private List<SpriteAnimation> _spriteAnimations = new List<SpriteAnimation>();
         [SerializeField] private bool _playAutomatically = true;
 
