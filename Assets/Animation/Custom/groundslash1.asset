@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animationName: animation
   Name: groundslash1
-  FPS: 8
+  FPS: 16
   Frames:
   - Sprite: {fileID: 451257647, guid: 0018aca690f7c61489c98c53a9130061, type: 3}
     EventName: 
@@ -24,4 +24,4 @@ MonoBehaviour:
     EventName: 
   - Sprite: {fileID: 812425969, guid: 0018aca690f7c61489c98c53a9130061, type: 3}
     EventName: 
-  SpriteAnimationType: 0
+  SpriteAnimationType: 1

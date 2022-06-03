@@ -42,8 +42,8 @@ public class Player : MonoBehaviour
     [TabGroup("STATES")]
     public PlayerCrouchMoveState CrouchMoveState{get; private set;}
     [TabGroup("STATES")]
-    public PlayerAttackState Primary{get; private set;}
-    public PlayerAttackState Secondary{get; private set;}
+    public PlayerAbilityState Primary{get; private set;}
+    public PlayerAbilityState Secondary{get; private set;}
     #endregion
     public Transform Stair;
     public Animator Anim;
@@ -87,8 +87,11 @@ public class Player : MonoBehaviour
             DashManagerState = new PlayerDashManagerState(this, StateMachine, playerData, "dash");
             DashManagerState.Dash_Mod = Dash_Modifier;
             
-            Primary = new PlayerAttackState(this, StateMachine, playerData, "attack");
+            //Primary = new PlayerAttackState(this, StateMachine, playerData, "attack");
+            Primary = new PlayerSlashState(this, StateMachine, playerData, "attack");//TESTING SETTING THE PRIMARY WEAPON TO SLASH WEAPON
             Secondary = new PlayerAttackState(this, StateMachine, playerData, "attack");
+
+            
         //
     }
     void Start(){
