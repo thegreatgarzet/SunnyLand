@@ -16,7 +16,13 @@ MonoBehaviour:
   - offset: {x: 0.8, y: 0.6}
     size: {x: 0.8, y: 0.8}
     frame: 1
+    collision_mask:
+      serializedVersion: 2
+      m_Bits: 128
   - offset: {x: 0, y: 0}
     size: {x: 0, y: 0}
     frame: 3
-  AnimationName: move
+    collision_mask:
+      serializedVersion: 2
+      m_Bits: 128
+  AnimationName: groundslash1

@@ -41,4 +41,13 @@ public class HitBoxInvoker : MonoBehaviour
             }
         }
     }
+    void InstantiateBox(HitBox hitBox){
+        Vector2 new_offset = new Vector2(hitBox.offset.x * transform.position.x, hitBox.offset.y);
+        Vector2 pos = (Vector2)transform.position + new_offset;
+        Collider2D[] _results = Physics2D.OverlapBoxAll(pos, hitBox.size, 0, hitBox.collision_mask);
+        for (int i = 0; i < _results.Length; i++)
+        {
+            print("Colidiu com: " + _results[i].ToString());
+        }
+    }
 }

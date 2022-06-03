@@ -11,5 +11,6 @@ public struct HitBox{
     public Vector2 offset;
     public Vector2 size;
     public int frame;
+    public LayerMask collision_mask;
     //DAMAGE WILL BE ADDED LATER, AS AN EXTRA SCRIPTABLE OBJECT
 }
