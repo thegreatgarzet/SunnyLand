@@ -59,18 +59,18 @@ namespace GabrielBigardi.SpriteAnimator
                 {
                     if (currentFrame != _previousAnimationFrame)
                     {
+                        
+
+                        if ((CurrentFrame + 1) > (CurrentAnimation.Frames.Count - 1))
+                        {
+                            triggerAnimationEndedEvent = true;
+                        }
                         if (triggerAnimationEndedEvent)
                         {
                             AnimationEnded?.Invoke();
 
                             if (CurrentAnimation.SpriteAnimationType != SpriteAnimationType.Looping) return;
                         }
-
-                        if ((CurrentFrame + 1) > (CurrentAnimation.Frames.Count - 1))
-                        {
-                            triggerAnimationEndedEvent = true;
-                        }
-
                         _previousAnimationFrame = currentFrame;
 
                         _spriteRenderer.sprite = currentFrame.Sprite;

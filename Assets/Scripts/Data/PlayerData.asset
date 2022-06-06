@@ -22,6 +22,7 @@ MonoBehaviour:
   moveSpeed: 6
   BasemoveSpeed: 6
   EnableDoubleJump: 1
+  attack_buffer_timer: 2
   GrabStair_Timer: 0.1
   StairClimb_Speed: 2
   Dash_Timer: 0.3

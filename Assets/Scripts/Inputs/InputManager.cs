@@ -18,6 +18,7 @@ public class InputManager : MonoBehaviour
     public bool Jump_Input, Jump_Input_Hold;
     public bool Grab_Input, Grab_Input_Hold;
     public bool Dash_Input, Dash_Input_Hold;
+    public AttackInfo player_attack_info;
 
     public bool[] AttackInputs{get;private set;}
     
@@ -72,31 +73,52 @@ public class InputManager : MonoBehaviour
     public void GetPrimaryInput(InputAction.CallbackContext context){
         if(context.started){
             AttackInputs[(int)CombatInputs.PRIMARY] = true;
+            player_attack_info.PrimaryAttack_Hold = player_attack_info.PrimaryAttack = true;
         }
         if(context.canceled){
             AttackInputs[(int)CombatInputs.PRIMARY] = false;
+            player_attack_info.PrimaryAttack_Hold = player_attack_info.PrimaryAttack = false;
         }
     }
 
     public void GetSecondaryInput(InputAction.CallbackContext context){
         if(context.started){
             AttackInputs[(int)CombatInputs.SECONDARY] = true;
+            player_attack_info.SecondaryAttack_Hold = player_attack_info.SecondaryAttack = true;
         }
         if(context.canceled){
             AttackInputs[(int)CombatInputs.SECONDARY] = false;
+            player_attack_info.SecondaryAttack_Hold = player_attack_info.SecondaryAttack = false;
         }
     }
     public void UseJumpInput() => Jump_Input = false;
     public void UseDashInput() => Dash_Input = false;
+    public AttackInfo GetAttackInput(){
+        AttackInfo temp_info = player_attack_info;
+        player_attack_info.Reset();
+        return temp_info;
+    }
     private void Awake()
     {
         int count = Enum.GetValues(typeof(CombatInputs)).Length;
         AttackInputs = new bool[count];
+        player_attack_info.Reset();
+            
+        
     }
     void Update(){
         if(Input.GetKeyDown(KeyCode.F)){
             SceneManager.LoadScene(0);
         }
+    }
+}
+public struct AttackInfo{
+    public bool PrimaryAttack;
+    public bool PrimaryAttack_Hold;
+    public bool SecondaryAttack;
+    public bool SecondaryAttack_Hold;
+    public void Reset(){
+        PrimaryAttack = PrimaryAttack_Hold = SecondaryAttack = SecondaryAttack_Hold = false;
     }
 }
 public enum CombatInputs{

@@ -82,7 +82,7 @@ public class Player : MonoBehaviour
             WallJumpState =  new PlayerWallJumpStateLoA(this, StateMachine, playerData, "jump");
 
             
-            OnStairState = new PlayerOnStairState(this, StateMachine, playerData, "stair_idle");
+            OnStairState = new PlayerOnStairState(this, StateMachine, playerData, "stair");
 
             DashManagerState = new PlayerDashManagerState(this, StateMachine, playerData, "dash");
             DashManagerState.Dash_Mod = Dash_Modifier;
@@ -131,11 +131,12 @@ public class Player : MonoBehaviour
     public bool TryAttack(){
         if(DetectCeiling())
             return false;
-        if(Input.AttackInputs[(int)CombatInputs.PRIMARY]){
+        AttackInfo info = Input.GetAttackInput();
+        if(info.PrimaryAttack){
             StateMachine.ChangeState(Primary);
             return true;    
         }else
-        if(Input.AttackInputs[(int)CombatInputs.SECONDARY]){
+        if(info.SecondaryAttack){
             StateMachine.ChangeState(Secondary);
             return true;    
         }

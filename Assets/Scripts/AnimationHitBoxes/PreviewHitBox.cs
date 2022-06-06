@@ -12,6 +12,6 @@ public class PreviewHitBox : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = _color;
-        Gizmos.DrawCube(transform.position, new Vector3(1, 1, 1));
+        Gizmos.DrawCube((Vector2)transform.position + new Vector2((box.offset.x)* transform.localScale.x, box.offset.y), box.size);
     }
 }

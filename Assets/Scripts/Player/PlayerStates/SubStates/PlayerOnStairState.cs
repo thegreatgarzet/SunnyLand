@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerOnStairState : PlayerAbilityState
 {
     public int dir_modifier;
+    bool using_move=false;
     
     public PlayerOnStairState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
     {
@@ -26,12 +27,14 @@ public class PlayerOnStairState : PlayerAbilityState
             }else{
                 player.SetVelocityY(Input.y * playerData.StairClimb_Speed);
                 if(Input.y!=0){
-                    player.sp_anim.Play("stair_moving");
-                    
+                    if(!using_move){
+                        player.sp_anim.Play("stairmoving");
+                        using_move = true;
+                    }
                     
                 }else{
-                    player.sp_anim.Play("stair_idle");
-                    
+                    using_move = false;
+                    player.sp_anim.Play("stair");
                 }
             }
         }else{
@@ -45,6 +48,7 @@ public class PlayerOnStairState : PlayerAbilityState
         base.Exit();
         
         player.physics.ResetGravity();
+        using_move = false;
     }
 
 }

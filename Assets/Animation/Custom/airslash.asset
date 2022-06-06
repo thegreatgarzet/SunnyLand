@@ -10,20 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5a569d9554f62734cad2cd3024c9dcb6, type: 3}
-  m_Name: groundslash1
+  m_Name: airslash
   m_EditorClassIdentifier: 
   animationName: animation
-  Name: groundslash1
+  Name: airslash
   FPS: 16
   Frames:
-  - Sprite: {fileID: 451257647, guid: 0018aca690f7c61489c98c53a9130061, type: 3}
+  - Sprite: {fileID: 2083403443, guid: 0018aca690f7c61489c98c53a9130061, type: 3}
     EventName: 
-  - Sprite: {fileID: -2017047208, guid: 0018aca690f7c61489c98c53a9130061, type: 3}
+  - Sprite: {fileID: 838865069, guid: 0018aca690f7c61489c98c53a9130061, type: 3}
     EventName: 
-  - Sprite: {fileID: -1468258247, guid: 0018aca690f7c61489c98c53a9130061, type: 3}
+  - Sprite: {fileID: -216695753, guid: 0018aca690f7c61489c98c53a9130061, type: 3}
     EventName: 
-  - Sprite: {fileID: 812425969, guid: 0018aca690f7c61489c98c53a9130061, type: 3}
-    EventName: 
-  - Sprite: {fileID: 812425969, guid: 0018aca690f7c61489c98c53a9130061, type: 3}
+  - Sprite: {fileID: 1220800953, guid: 0018aca690f7c61489c98c53a9130061, type: 3}
     EventName: 
   SpriteAnimationType: 1

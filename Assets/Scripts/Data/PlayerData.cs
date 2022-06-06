@@ -9,6 +9,8 @@ public class PlayerData : ObjData {
     
 	
     public bool EnableDoubleJump=true;
+    [Header("Attack Values")]
+    public float attack_buffer_timer=.1f;
     [Header("Stair")]
     public float GrabStair_Timer = .1f;
     public float StairClimb_Speed = 1;

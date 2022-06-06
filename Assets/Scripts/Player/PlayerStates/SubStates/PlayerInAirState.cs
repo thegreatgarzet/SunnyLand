@@ -6,7 +6,7 @@ using UnityEngine.InputSystem.Interactions;
 public class PlayerInAirState : PlayerState
 {
     public bool doubleJumped=false;
-    bool EnableDoubleJump;
+    public bool EnableDoubleJump;
     
     public PlayerInAirState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
     {

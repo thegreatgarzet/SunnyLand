@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: stair_idle
   m_EditorClassIdentifier: 
   animationName: animation
-  Name: stair_idle
+  Name: stair
   FPS: 1
   Frames:
   - Sprite: {fileID: 21300000, guid: 3f22dde91257f974683bd2a49eb048c6, type: 3}
     EventName: 
-  SpriteAnimationType: 0
+  SpriteAnimationType: 1
